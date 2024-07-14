@@ -1,37 +1,33 @@
 let index = 0;
-let incorrect = "Incorrect Password";
 const password = document.getElementById("password");
 const hint = document.getElementById("hint");
 
 const tellers = [
-    { tell: "Enter Password" },
-    { tell: `${incorrect}, Try Again` },
-    { tell: `${incorrect}, Try Again Later`, password: "Try Again Later" }
-
+    { tell: "Enter <i>Password</i>" },
+    { tell: "Incorrect <i>Password</i>", password: "Password" },
+    { tell: "Correct <i>Password</i>" }
 ]
 
 document.addEventListener("keyup", (event) => {
 
     if (event.key === 'Enter') {
-        if(password.value === tellers[index].password) {
-            document.getElementById("image").src = "./img/you-are-gay.png"
-        } else if (index <= 1) {
-            console.log("Nope")
-            index++;
-            Ouput();
+        if(password.value === tellers[1].password) {
+            index = 2;
+            document.getElementById("image").src = "./img/you-are-gay.png";
+            Output();
         } else {
-            index = 0;
-            Ouput();
+            index = 1
+            Output();
         }
     }
 })
 
-function Ouput() {
+function Output() {
     document.getElementById("teller").innerHTML = tellers[index].tell;
 }
 
-Ouput();
+Output();
 
 hint.addEventListener("click", () => {
-    document.getElementById('clue').innerHTML = "Hint: Just follow what (#ff0000) said.";
+    document.getElementById('clue').innerHTML = "Hint: The password is (Password)";
 })
