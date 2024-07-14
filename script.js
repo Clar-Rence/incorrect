@@ -5,7 +5,7 @@ const hint = document.getElementById("hint");
 const tellers = [
     { tell: "Enter <i>Password</i>" },
     { tell: "Incorrect <i>Password</i>", password: "Password" },
-    { tell: "Correct <i>Password</i>" }
+    { tell: "You Are Still Single</i>" }
 ]
 
 document.addEventListener("keyup", (event) => {
@@ -13,7 +13,7 @@ document.addEventListener("keyup", (event) => {
     if (event.key === 'Enter') {
         if(password.value === tellers[1].password) {
             index = 2;
-            document.getElementById("image").src = "./img/you-are-gay.png";
+            document.getElementById("image").src = "./img/cat-pointing.png";
             Output();
         } else {
             index = 1
