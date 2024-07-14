@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Quicksand", sans-serif;
+}
+body {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #0a0a0a;
+}
+h1[id="clue"] {
+    font-size: 15px;
+    padding: .50rem;
+    color: #ca8a04;
+    margin-bottom: 1rem;
+    background-color: #422006;
+    border: .10rem solid #854d0e;
+}
+button[id="hint"] {
+    top: 30px;
+    left: 30px;
+    color: #ca8a04;
+    padding: 0.20rem 1rem;
+    position: absolute;
+    background-color: #422006;
+    border: .10rem solid #854d0e;
+    animation: glowing 2s infinite;
+}
+@keyframes glowing {
+    0%, 100% { box-shadow: 0 0 5px #ca8a04; }
+    50% { box-shadow: 0 0 15px #ca8a04; }
+}
+img[id="image"] {
+    width: 100%;
+    height: 300px;
+}
+h1[id="teller"] {
+    width: 300px;
+    font-size: 15px;
+    padding: .50rem;
+    color: #dc2626;
+    text-align: center;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+    font-weight: 500;
+    background-color: #450a0a;
+    border: .10rem solid #991b1b;
+}
+input[id="password"] {
+    width: 100%;
+    height: 50px;
+    color: #fff;
+    outline: none;
+    font-size: 15px;
+    padding-left: 10px;
+    font-weight: 600;
+    border-radius: 10px;
+    background-color: #0a0a0a;
+    border: .10rem solid #242424;
+}
