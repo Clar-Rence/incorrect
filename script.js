@@ -1,33 +1,56 @@
 let index = 0;
-const password = document.getElementById("password");
-const hint = document.getElementById("hint");
+let attempt = 0;
+let correctPassword = "Password";
+const showHint = document.getElementById("clue");
 
 const tellers = [
-    { tell: "Enter <i>Password</i>" },
-    { tell: "Incorrect <i>Password</i>", password: "Password" },
-    { tell: "You Are Still Single</i>" }
+    { tell: "Enter Password" },
+    { tell: "Incorrect Password" },
+    { tell: "Correct Password" }
 ]
 
-document.addEventListener("keyup", (event) => {
+function Delay(ms) {
+    return new Promise(resolve => {
+        setTimeout(resolve, ms);
+    })
+}
 
+document.addEventListener("keyup", (event) => {
     if (event.key === 'Enter') {
-        if(password.value === tellers[1].password) {
+        const password = document.getElementById("password").value;
+        if (password === correctPassword) {
             index = 2;
-            document.getElementById("image").src = "./img/cat-pointing.png";
-            Output();
+            document.getElementById("image").src = "./img/you-are-gay.png";
+            Output("That is correct");
+            ShowHint();
         } else {
-            index = 1
-            Output();
+            if (correctPassword.startsWith(password)) {
+                Output("Almost there");
+                ShowHint();
+            } else if (attempt === 10) {
+                Output("The password is \"Password\"");
+                document.getElementById("password").value = "Passwor"
+            } else {
+                Output("Start with \"P\" and then lowercase letters");
+                ShowHint();
+            }
+            index = 1;
+            attempt++;
         }
     }
-})
+});
 
-function Output() {
+function Output(text) {
     document.getElementById("teller").innerHTML = tellers[index].tell;
+    showHint.innerHTML = text;
+}
+
+async function ShowHint() {
+    showHint.classList.add("show");
+    await Delay(5000);
+    showHint.classList.remove("show");
 }
 
 Output();
 
-hint.addEventListener("click", () => {
-    document.getElementById('clue').innerHTML = "Hint: The password is (Password)";
-})
+
